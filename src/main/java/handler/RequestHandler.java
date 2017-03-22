@@ -1,4 +1,4 @@
-package webserver;
+package handler;
 
 import java.io.*;
 import java.net.Socket;
@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import db.DataBase;
+import model.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +41,13 @@ public class RequestHandler extends Thread {
                 connection.getPort());
 
         try (InputStream in = connection.getInputStream(); OutputStream out = connection.getOutputStream()) {
+
+//            HttpRequestHandler reqHandler = new HttpRequestHandler(in);
+//            HttpResponseHandler repHandler = new HttpResponseHandler(out);
+//
+//            Data data = reqHandler.handle();
+//            repHandler.response(data);
+
             BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             String line = br.readLine();
             String[] headerUrl = getParedHeader(line);
