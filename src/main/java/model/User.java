@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Map;
+
 public class User {
     private String userId;
     private String password;
@@ -11,6 +13,13 @@ public class User {
         this.password = password;
         this.name = name;
         this.email = email;
+    }
+    
+    public User(Map<String, String> userData) {
+    	this.userId = userData.get("userId");
+    	this.password = userData.get("password");
+    	this.name = userData.get("name");
+    	this.email = userData.get("email");
     }
 
     public String getUserId() {
@@ -32,5 +41,9 @@ public class User {
     @Override
     public String toString() {
         return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
+    }
+
+    public boolean isCorrect(String password) {
+        return this.password.equals(password);
     }
 }
