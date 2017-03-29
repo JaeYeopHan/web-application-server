@@ -1,15 +1,18 @@
 package webserver;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import controller.Controller;
 import controller.CreateUserController;
 import controller.ListUserController;
 import controller.LoginController;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class RequestMapping {
-    private static Map<String, Controller> controllers = new HashMap<String, Controller>();
+
+    private RequestMapping() {}
+
+    private static Map<String, Controller> controllers = new ConcurrentHashMap<>();
 
     static {
         controllers.put("/user/create", new CreateUserController());
